@@ -4,6 +4,9 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
+
 import java.sql.Date;
 
 @Entity
@@ -18,8 +21,20 @@ public class Wizard {
     private String birthPlace;
     private String biography;
     private boolean muggle;
+    
+    @ManyToOne
+    @JoinColumn(name= "school_id")
+    private School school;
 
-    public Wizard() {
+    public School getSchool() {
+		return school;
+	}
+
+	public void setSchool(School school_id) {
+		this.school = school_id;
+	}
+
+	public Wizard() {
     }
 
     public Long getId() {
